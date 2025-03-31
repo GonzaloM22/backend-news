@@ -1,9 +1,8 @@
-import { Router } from "express";
+import { Router } from 'express';
+import { createNews } from './handlers/news';
 
 const router = Router();
 
-router.get("/", (req, res) => {
-
-})
+router.post('/', createNews);
 
 export default router;
