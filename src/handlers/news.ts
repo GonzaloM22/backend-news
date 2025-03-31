@@ -27,7 +27,7 @@ export const getNewsById = async (req: Request, res: Response) => {
 export const createNews = async (req: Request, res: Response) => {
   try {
     const news = await News.create(req.body);
-    res.json({ data: news });
+    res.status(201).json({ data: news });
   } catch (error) {
     console.log(error);
   }
