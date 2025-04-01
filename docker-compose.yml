@@ -1,9 +1,0 @@
-version: "3"
-services:
-  flxwebapi:
-    build: .
-    image: gonzalo.moreno/news:latest
-    ports:
-      - "5000:5000"
-    # volumes:      
-    #   - ./server/data:/app/data
