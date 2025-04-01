@@ -3,6 +3,7 @@ import {
   createNews,
   deleteNews,
   getNews,
+  getNewsByAuthor,
   getNewsById,
   updateNews,
 } from './handlers/news';
@@ -19,6 +20,13 @@ router.get(
   getNewsById
 );
 
+router.get(
+  '/author/:author',
+  param('author').notEmpty().withMessage('Author is required'),
+  handleInputErrors,
+  getNewsByAuthor
+);
+
 router.post(
   '/',
   body('title').notEmpty().withMessage('Title is required'),
@@ -33,7 +41,7 @@ router.put(
   updateNews
 );
 
-router.put(
+router.delete(
   '/:id',
   param('id').isInt().withMessage('Invalid Id'),
   handleInputErrors,

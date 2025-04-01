@@ -2,6 +2,7 @@ import express from 'express';
 import router from './router';
 import db from './config/db';
 import colors from 'colors';
+import cors from "cors";
 
 const server = express();
 
@@ -10,13 +11,15 @@ async function dbConnect() {
   try {
     await db.authenticate();
     db.sync();
-    //console.log(colors.blue.bold('Conexión exitosa a la BD'));
+    console.log(colors.blue.bold('Conexión exitosa a la BD'));
   } catch (error) {
-    //console.log(colors.red.bold('Error al conectar a la base de datos'));
+    console.log(colors.red.bold('Error al conectar a la base de datos'));
   }
 }
 
 dbConnect();
+
+server.use(cors());
 
 //Leer datos de forms
 server.use(express.json());
